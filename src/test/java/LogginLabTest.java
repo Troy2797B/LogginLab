@@ -45,18 +45,18 @@ public class LogginLabTest {
     //boolean = must test for both conditions. So maybe two tests?
     @org.junit.Test
     public void thresholdReachedTest() {
-        int yesAbove = 5;
+        Integer yesAbove = 5;
 
         LogginLab logg = new LogginLab();
         logg.setThreshold(yesAbove);
 
-        for (int i = 10; i == yesAbove; i--) {
+        for (int i = 10; i >= yesAbove; i--) {
             if (logg.thresholdExceeds(i)) {
                 logger.log(Level.INFO, "facts");
-                assertTrue(logg.thresholdReached(5));
+                assertFalse(logg.thresholdReached(i));
             } else {
                 logger.log(Level.INFO, "that's a big L");
-                assertFalse(logg.thresholdReached(5));
+                assertTrue(logg.thresholdReached(i));
             }
         }
     }
