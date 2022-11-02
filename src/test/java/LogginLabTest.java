@@ -21,7 +21,7 @@ public class LogginLabTest {
         LogginLab lab = new LogginLab();
         lab.setThreshold(finalLimit);
 
-        for (Integer i = 1; i <= finalLimit; i++) {
+        for (Integer i = 1; i < finalLimit; i++) {
             if (lab.thresholdExceeds(i)) {
                 logger.log(Level.INFO, "Threshold not reached! It is "+i);
                 assertTrue(lab.thresholdExceeds(i));
@@ -45,18 +45,18 @@ public class LogginLabTest {
     //boolean = must test for both conditions. So maybe two tests?
     @org.junit.Test
     public void thresholdReachedTest() {
-        Integer yesAbove = 5;
+        Integer finalLimit = 5;
 
         LogginLab logg = new LogginLab();
-        logg.setThreshold(yesAbove);
+        logg.setThreshold(finalLimit);
 
-        for (int i = 10; i >= yesAbove; i--) {
+        for (int i = 1; i == finalLimit; i++) {
             if (logg.thresholdExceeds(i)) {
                 logger.log(Level.INFO, "facts");
-                assertFalse(logg.thresholdReached(i));
+                assertTrue(logg.thresholdReached(i));
             } else {
                 logger.log(Level.INFO, "that's a big L");
-                assertTrue(logg.thresholdReached(i));
+                assertFalse(logg.thresholdReached(i));
             }
         }
     }
