@@ -1,5 +1,3 @@
-import org.junit.Test;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,13 +42,28 @@ public class LogginLabTest {
         assertTrue(actual);
         return expected;
     }*/
-    /*@Test
-    public boolean thresholdReachedTest(){
-        boolean expected = true;
+    //boolean = must test for both conditions. So maybe two tests?
+    @org.junit.Test
+    public void thresholdReachedTest() {
+        int yesAbove = 5;
+
+        LogginLab logg = new LogginLab();
+        logg.setThreshold(yesAbove);
+
+        for (int i = 10; i == yesAbove; i--) {
+            if (logg.thresholdExceeds(i)) {
+                logger.log(Level.INFO, "facts");
+                assertTrue(logg.thresholdReached(5));
+            } else {
+                logger.log(Level.INFO, "that's a big L");
+                assertFalse(logg.thresholdReached(5));
+            }
+        }
+    }
+
+        /*boolean expected = true;
         LogginLab lab = new LogginLab();
         lab.setThreshold(5);
         boolean actual = lab.thresholdReached(10);
-        assertTrue(expected);
-        return actual;
-    }*/
+        assertTrue(expected);*/
 }
